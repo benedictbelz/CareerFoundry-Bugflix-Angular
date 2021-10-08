@@ -1,0 +1,27 @@
+<app-header></app-header>
+<div class="profile-page">
+    <div class="profile-page-content">
+        <p class="profile-page-title">Profile</p>
+        <div class="profile-page-data">
+            <p><span>Username </span>{{ user.Username }}</p>
+            <p><span>E-Mail </span>{{ user.Email }}</p>
+            <p><span>Birthday </span>{{ user.Birthday.split("T")[0] }}</p>
+        </div>
+        <div class="profile-page-button">
+            <button
+				mat-raised-button
+				(click)="openUserEditDialog()"
+				color="primary"
+			>
+				Edit
+			</button>
+			<button
+				mat-raised-button
+				(click)="deleteProfile()"
+				color="warn"
+			>
+				Delete
+			</button>
+        </div>
+    </div>
+</div>

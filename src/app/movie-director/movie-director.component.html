@@ -1,0 +1,14 @@
+<div class="movie-director">
+	<div class="movie-director-header">
+		<h2 class="title">{{ data.Name }}</h2>
+		<p><span>Born </span>{{ data.Birth }}</p>
+	</div>
+	<mat-dialog-content>
+		{{ data.Bio }}
+	</mat-dialog-content>
+	<div class="movie-director-button">
+		<button mat-button mat-dialog-close color="primary">
+			Close
+		</button>
+	</div>
+</div>

@@ -1,0 +1,23 @@
+.welcome-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+    .welcome-page-content{
+        padding: 20px;
+        border-radius: 10px;
+        background-color: white;
+
+        .welcome-page-button{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            button:not(:last-of-type){
+                margin-right: 10px;
+            }
+        }
+    }
+}

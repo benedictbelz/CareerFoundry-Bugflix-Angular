@@ -1,0 +1,12 @@
+#header{
+    justify-content: flex-end;
+
+    #title{
+        cursor: pointer;
+        margin-right: auto;
+    }
+
+    button:not(:last-of-type){
+        margin-right: 10px;
+    }
+}

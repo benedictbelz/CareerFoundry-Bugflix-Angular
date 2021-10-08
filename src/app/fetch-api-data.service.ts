@@ -5,8 +5,6 @@ import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 const apiUrl = 'https://bugflixthefirst.herokuapp.com/';
-const token = localStorage.getItem('token');
-const user = localStorage.getItem('user');
 
 @Injectable({
 	providedIn: 'root',
@@ -15,15 +13,15 @@ const user = localStorage.getItem('user');
 export class FetchApiDataService {
 	constructor(private http: HttpClient) {}
 
-	public userRegistration(userDetails: any): Observable<any> {
+	public userRegistration(user: any): Observable<any> {
 		return this.http
-			.post(apiUrl + 'users', userDetails)
+			.post(apiUrl + 'users', user)
 			.pipe(catchError(this.handleError));
 	}
 
-	public userLogin(userDetails: any): Observable<any> {
+	public userLogin(user: any): Observable<any> {
 		return this.http
-			.post(apiUrl + 'login', userDetails)
+			.post(apiUrl + 'login', user)
 			.pipe(catchError(this.handleError));
 	}
 
@@ -50,6 +48,7 @@ export class FetchApiDataService {
 	}
 
 	public getMovies(): Observable<any> {
+		const token = localStorage.getItem('token');
 		return this.http
 			.get(apiUrl + 'movies', {
 				headers: new HttpHeaders({
@@ -59,29 +58,10 @@ export class FetchApiDataService {
 			.pipe(map(this.extractResponseData), catchError(this.handleError));
 	}
 
-	/* public getMovie(movie: any): Observable<any> {
+	public getUser(user: any): Observable<any> {
+		const token = localStorage.getItem('token');
 		return this.http
-			.get(apiUrl + `movies/${movie}`, {
-				headers: new HttpHeaders({
-					Authorization: 'Bearer ' + token,
-				}),
-			})
-			.pipe(map(this.extractResponseData), catchError(this.handleError));
-	} */
-
-	/* public getUser(): Observable<any> {
-		return this.http
-			.get(apiUrl + `users/${user}`, {
-				headers: new HttpHeaders({
-					Authorization: 'Bearer ' + token,
-				}),
-			})
-			.pipe(map(this.extractResponseData), catchError(this.handleError));
-	} */
-
-	public updateUser(userDetails: any): Observable<any> {
-		return this.http
-			.put(apiUrl + `users/${user}`, userDetails, {
+			.get(apiUrl + `users/${user.Username}`, {
 				headers: new HttpHeaders({
 					Authorization: 'Bearer ' + token,
 				}),
@@ -89,9 +69,10 @@ export class FetchApiDataService {
 			.pipe(map(this.extractResponseData), catchError(this.handleError));
 	}
 
-	public deleteUser(): Observable<any> {
+	public updateUser(user: any): Observable<any> {
+		const token = localStorage.getItem('token');
 		return this.http
-			.delete(apiUrl + `users/${user}`, {
+			.put(apiUrl + `users/${user.Username}`, user, {
 				headers: new HttpHeaders({
 					Authorization: 'Bearer ' + token,
 				}),
@@ -99,19 +80,25 @@ export class FetchApiDataService {
 			.pipe(map(this.extractResponseData), catchError(this.handleError));
 	}
 
-	/* public getFavourites(): Observable<any> {
+	public deleteUser(user: any): Observable<any> {
+		const token = localStorage.getItem('token');
 		return this.http
-			.post(apiUrl + `users/${user}/favourites/`, {
+			.delete(apiUrl + `users/${user.Username}`, {
 				headers: new HttpHeaders({
 					Authorization: 'Bearer ' + token,
 				}),
+				responseType: 'text' as const
 			})
-			.pipe(map(this.extractResponseData), catchError(this.handleError));
-	} */
+			.pipe(catchError(this.handleError));
+	}
 
-	public addFavourite(movie: any): Observable<any> {
+	public addFavourite(user: any, id: any): Observable<any> {
+		const token = localStorage.getItem('token');
+
+		console.log(user.Username, token);
+
 		return this.http
-			.post(apiUrl + `users/${user}/favourites/${movie}`, {
+			.post(apiUrl + `users/${user.Username}/favourites/${id}`, id, {
 				headers: new HttpHeaders({
 					Authorization: 'Bearer ' + token,
 				}),
@@ -119,9 +106,10 @@ export class FetchApiDataService {
 			.pipe(map(this.extractResponseData), catchError(this.handleError));
 	}
 
-	public removeFavourite(movie: any): Observable<any> {
+	public removeFavourite(user: any, id: any): Observable<any> {
+		const token = localStorage.getItem('token');
 		return this.http
-			.post(apiUrl + `users/${user}/favourites/${movie}`, {
+			.delete(apiUrl + `users/${user.Username}/favourites/${id}`, {
 				headers: new HttpHeaders({
 					Authorization: 'Bearer ' + token,
 				}),
@@ -129,15 +117,16 @@ export class FetchApiDataService {
 			.pipe(map(this.extractResponseData), catchError(this.handleError));
 	}
 
-	private extractResponseData(res: Response | Object): any {
-		return res || {};
+	private extractResponseData(response: Response | Object): any {
+		return response || {};
 	}
 
 	private handleError(error: HttpErrorResponse): any {
+		console.log(error);
 		if (error.error instanceof ErrorEvent)
 			console.error('SOME ERROR OCCURED:', error.error.message);
 		else
 			console.error(`ERROR STATUS CODE ${error.status}, ` + `ERROR BODY IS: ${error.error}`);
-		return throwError('COULD NOT COMPLETE REGISTRATION PROCESS, PLEASE TRY AGAIN LATER');
+		return throwError('COULD NOT COMPLETE PROCESS, PLEASE TRY AGAIN LATER');
 	}
 }

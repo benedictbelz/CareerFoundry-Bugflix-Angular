@@ -1,0 +1,30 @@
+.profile-page{
+    padding: 20px;
+
+    .profile-page-content{
+        background-color: white;
+        padding: 20px;
+        border-radius: 4px;
+
+        .profile-page-title{
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .profile-page-data span{
+            color: grey;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .profile-page-button {
+            margin-top: 20px;
+
+            button:not(:last-of-type){
+                margin-right: 10px;
+            }
+        }
+    }
+}
