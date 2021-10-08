@@ -15,7 +15,7 @@ export class FetchApiDataService {
 
 	/**
 	 * This function registers the user.
-	 * @param user { Username, Password, E-Mail, Birthday, Favorites }
+	 * @param user Username, Password, E-Mail, Birthday, Favorites
 	 * @returns Registered user
 	 */
 	public userRegistration(user: any): Observable<any> {
@@ -26,7 +26,7 @@ export class FetchApiDataService {
 
 	/**
 	 * This function logs the user into the application.
-	 * @param user { Username, Password, E-Mail, Birthday, Favorites }
+	 * @param user Username, Password, E-Mail, Birthday, Favorites
 	 * @returns Logged user and token
 	 */
 	public userLogin(user: any): Observable<any> {
@@ -82,7 +82,7 @@ export class FetchApiDataService {
 
 	/**
 	 * This function gets the user from the API.
-	 * @param user { Username, Password, E-Mail, Birthday, Favorites }
+	 * @param user Username, Password, E-Mail, Birthday, Favorites
 	 * @returns The user
 	 */
 	public getUser(user: any): Observable<any> {
@@ -98,7 +98,7 @@ export class FetchApiDataService {
 
 	/**
 	 * This function updates the user in the API.
-	 * @param user { Username, Password, E-Mail, Birthday, Favorites }
+	 * @param user Username, Password, E-Mail, Birthday, Favorites
 	 * @returns The updated user
 	 */
 	public updateUser(user: any): Observable<any> {
@@ -114,7 +114,7 @@ export class FetchApiDataService {
 
 	/**
 	 * This function deletes the user from the API.
-	 * @param user User: { Username, Password, E-Mail, Birthday, Favorites }
+	 * @param user Username, Password, E-Mail, Birthday, Favorites
 	 * @returns Success message
 	 */
 	public deleteUser(user: any): Observable<any> {
@@ -131,8 +131,8 @@ export class FetchApiDataService {
 
 	/**
 	 * This function adds favourites to the user.
-	 * @param user { Username, Password, E-Mail, Birthday, Favorites }
-	 * @param id string
+	 * @param user Username, Password, E-Mail, Birthday, Favorites
+	 * @param id Movie ID
 	 * @returns The updated favourites array
 	 */
 	public addFavourite(user: any, id: any): Observable<any> {
@@ -151,8 +151,8 @@ export class FetchApiDataService {
 
 	/**
 	 * This function removes favourites from the user.
-	 * @param user { Username, Password, E-Mail, Birthday, Favorites }
-	 * @param id string
+	 * @param user Username, Password, E-Mail, Birthday, Favorites
+	 * @param id Movie ID
 	 * @returns The updated favourites array
 	 */
 	public removeFavourite(user: any, id: any): Observable<any> {

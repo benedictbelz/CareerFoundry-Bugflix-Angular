@@ -43,7 +43,7 @@ export class MovieCardComponent implements OnInit {
 
 	/**
 	 * This function gets the movie according to its id and add it to the favourites list.
-	 * @param id number
+	 * @param id Movie ID
 	 */
 	addFavourite(id: number) {
 		const index = this.movies.findIndex(movie => movie._id === id);
@@ -57,7 +57,7 @@ export class MovieCardComponent implements OnInit {
 
 	/**
 	 * This function gets the movie according to its id and removes it from the favourites list.
-	 * @param id number
+	 * @param id Movie ID
 	 */
 	removeFavourite(id: number) {
 		const index = this.movies.findIndex(movie => movie._id === id);
@@ -71,9 +71,9 @@ export class MovieCardComponent implements OnInit {
 
 	/**
 	 * This function opens the director dialog and passes the parameters.
-	 * @param Name string
-	 * @param Bio string
-	 * @param Birth string
+	 * @param Name Director Name
+	 * @param Bio Director Bio
+	 * @param Birth Director Birth
 	 */
 	openDirectorDialog(Name: string, Bio: string, Birth: string): void {
 		this.dialog.open(MovieDirectorComponent, {
@@ -84,8 +84,8 @@ export class MovieCardComponent implements OnInit {
 
 	/**
 	 * This function opens the genre dialog and passes the parameters.
-	 * @param Name string
-	 * @param Description string
+	 * @param Name Genre Name
+	 * @param Description Genre Description
 	 */
 	openGenreDialog(Name: string, Description: string) {
 		this.dialog.open(MovieGenreComponent, {
@@ -96,7 +96,7 @@ export class MovieCardComponent implements OnInit {
 
 	/**
 	 * This function opens the synopsis dialog and passes the parameters.
-	 * @param Description 
+	 * @param Description Synopsis Description
 	 */
 	openSynopsis(Description: string) {
 		this.dialog.open(MovieSynopsisComponent, {
