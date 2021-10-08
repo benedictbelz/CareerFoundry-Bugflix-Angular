@@ -11,6 +11,10 @@ import { Router } from '@angular/router';
 })
 
 export class UserRegistrationFormComponent implements OnInit {
+
+	/**
+	 * Required field for registration.
+	 */
 	@Input() user = { Username: '', Password: '', Email: '', Birthday: '' };
 
 	constructor(
@@ -22,6 +26,9 @@ export class UserRegistrationFormComponent implements OnInit {
 
 	ngOnInit(): void {}
 
+	/**
+	 * This function registers the user and if it is successful automatically proceeds to login.
+	 */
 	registerUser(): void {
 		this.fetchApiData.userRegistration(this.user).subscribe(
 			response => {

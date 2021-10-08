@@ -22,6 +22,9 @@ export class WelcomePageComponent implements OnInit {
 		this.checkUser();
 	}
 
+	/**
+	 * This function checks if the user is already logged in.
+	 */
 	checkUser() {
 		const user = JSON.parse(localStorage.getItem('user'));
 		if (user) {
@@ -30,10 +33,16 @@ export class WelcomePageComponent implements OnInit {
 		}
 	}
 	
+	/**
+	 * This function opens the registration dialog.
+	 */
 	openUserRegistrationDialog(): void {
 		this.dialog.open(UserRegistrationFormComponent, { width: '400px' });
 	}
 	
+	/**
+	 * This function opens the login dialog.
+	 */
 	openUserLoginDialog(): void {
 		this.dialog.open(UserLoginFormComponent, { width: '400px' });
 	}

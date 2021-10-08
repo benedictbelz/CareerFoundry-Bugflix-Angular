@@ -24,6 +24,9 @@ export class ProfilePageComponent implements OnInit {
 		this.getUser();
 	}
 
+	/**
+	 * This function tries to get the user from the local storage.
+	 */
 	getUser(): void {
 		const user = JSON.parse(localStorage.getItem('user'));
 		if (user)
@@ -34,10 +37,16 @@ export class ProfilePageComponent implements OnInit {
 		}
 	}
 
+	/**
+	 * This function opens the edit dialog.
+	 */
 	openUserEditDialog(): void {
 		this.dialog.open(UserEditFormComponent, { width: '400px' });
 	}
 
+	/**
+	 * This function deletes the user from the API and goes back to the welcome page.
+	 */
 	deleteProfile(): void {
 		if (confirm('Are you sure?')) {
 			this.fetchApiData.deleteUser(this.user).subscribe(response => {

@@ -15,6 +15,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
 import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
@@ -26,7 +27,9 @@ import { MovieSynopsisComponent } from './movie-synopsis/movie-synopsis.componen
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { UserEditFormComponent } from './user-edit-form/user-edit-form.component';
 
-
+/**
+ * Set routes for welcome, movies and profile.
+ */
 const routes: Routes = [
 	{ path: 'welcome', component: WelcomePageComponent },
 	{ path: 'movies', component: MovieCardComponent },

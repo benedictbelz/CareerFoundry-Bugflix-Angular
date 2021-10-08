@@ -28,6 +28,9 @@ export class MovieCardComponent implements OnInit {
 		this.getUser();
 	}
 
+	/**
+	 * This function tries to get the user from the local storage.
+	 */
 	getUser(): void {
 		const user = JSON.parse(localStorage.getItem('user'));
 		if (user)
@@ -38,6 +41,10 @@ export class MovieCardComponent implements OnInit {
 		}
 	}
 
+	/**
+	 * This function gets the movie according to its id and add it to the favourites list.
+	 * @param id number
+	 */
 	addFavourite(id: number) {
 		const index = this.movies.findIndex(movie => movie._id === id);
 		if (index !== -1) {
@@ -48,6 +55,10 @@ export class MovieCardComponent implements OnInit {
 		}
 	}
 
+	/**
+	 * This function gets the movie according to its id and removes it from the favourites list.
+	 * @param id number
+	 */
 	removeFavourite(id: number) {
 		const index = this.movies.findIndex(movie => movie._id === id);
 		if (index !== -1) {
@@ -58,6 +69,12 @@ export class MovieCardComponent implements OnInit {
 		}
 	}
 
+	/**
+	 * This function opens the director dialog and passes the parameters.
+	 * @param Name string
+	 * @param Bio string
+	 * @param Birth string
+	 */
 	openDirectorDialog(Name: string, Bio: string, Birth: string): void {
 		this.dialog.open(MovieDirectorComponent, {
 			data: { Name, Bio, Birth },
@@ -65,6 +82,11 @@ export class MovieCardComponent implements OnInit {
 		});
 	}
 
+	/**
+	 * This function opens the genre dialog and passes the parameters.
+	 * @param Name string
+	 * @param Description string
+	 */
 	openGenreDialog(Name: string, Description: string) {
 		this.dialog.open(MovieGenreComponent, {
 			data: { Name, Description },
@@ -72,6 +94,10 @@ export class MovieCardComponent implements OnInit {
 		});
 	}
 
+	/**
+	 * This function opens the synopsis dialog and passes the parameters.
+	 * @param Description 
+	 */
 	openSynopsis(Description: string) {
 		this.dialog.open(MovieSynopsisComponent, {
 			data: { Description },
@@ -79,6 +105,9 @@ export class MovieCardComponent implements OnInit {
 		});
 	}
 
+	/**
+	 * This function gets all directors, genres, movies and favourites and merges them together.
+	 */
 	getMovies(): void {
 		// DEFINE VARIABLES
 		let favourites: any;

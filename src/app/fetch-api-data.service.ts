@@ -13,18 +13,32 @@ const apiUrl = 'https://bugflixthefirst.herokuapp.com/';
 export class FetchApiDataService {
 	constructor(private http: HttpClient) {}
 
+	/**
+	 * This function registers the user.
+	 * @param user { Username, Password, E-Mail, Birthday, Favorites }
+	 * @returns Registered user
+	 */
 	public userRegistration(user: any): Observable<any> {
 		return this.http
 			.post(apiUrl + 'users', user)
 			.pipe(catchError(this.handleError));
 	}
 
+	/**
+	 * This function logs the user into the application.
+	 * @param user { Username, Password, E-Mail, Birthday, Favorites }
+	 * @returns Logged user and token
+	 */
 	public userLogin(user: any): Observable<any> {
 		return this.http
 			.post(apiUrl + 'login', user)
 			.pipe(catchError(this.handleError));
 	}
 
+	/**
+	 * This function gets all directors from the API.
+	 * @returns All directors
+	 */
 	public getDirectors(): Observable<any> {
 		const token = localStorage.getItem('token');
 		return this.http
@@ -36,6 +50,10 @@ export class FetchApiDataService {
 			.pipe(map(this.extractResponseData), catchError(this.handleError));
 	}
 
+	/**
+	 * This function gets all genres from the API.
+	 * @returns All genres
+	 */
 	public getGenres(): Observable<any> {
 		const token = localStorage.getItem('token');
 		return this.http
@@ -47,6 +65,10 @@ export class FetchApiDataService {
 			.pipe(map(this.extractResponseData), catchError(this.handleError));
 	}
 
+	/**
+	 * This function gets all movies from the API.
+	 * @returns All movies
+	 */
 	public getMovies(): Observable<any> {
 		const token = localStorage.getItem('token');
 		return this.http
@@ -58,6 +80,11 @@ export class FetchApiDataService {
 			.pipe(map(this.extractResponseData), catchError(this.handleError));
 	}
 
+	/**
+	 * This function gets the user from the API.
+	 * @param user { Username, Password, E-Mail, Birthday, Favorites }
+	 * @returns The user
+	 */
 	public getUser(user: any): Observable<any> {
 		const token = localStorage.getItem('token');
 		return this.http
@@ -69,6 +96,11 @@ export class FetchApiDataService {
 			.pipe(map(this.extractResponseData), catchError(this.handleError));
 	}
 
+	/**
+	 * This function updates the user in the API.
+	 * @param user { Username, Password, E-Mail, Birthday, Favorites }
+	 * @returns The updated user
+	 */
 	public updateUser(user: any): Observable<any> {
 		const token = localStorage.getItem('token');
 		return this.http
@@ -80,6 +112,11 @@ export class FetchApiDataService {
 			.pipe(map(this.extractResponseData), catchError(this.handleError));
 	}
 
+	/**
+	 * This function deletes the user from the API.
+	 * @param user User: { Username, Password, E-Mail, Birthday, Favorites }
+	 * @returns Success message
+	 */
 	public deleteUser(user: any): Observable<any> {
 		const token = localStorage.getItem('token');
 		return this.http
@@ -92,6 +129,12 @@ export class FetchApiDataService {
 			.pipe(catchError(this.handleError));
 	}
 
+	/**
+	 * This function adds favourites to the user.
+	 * @param user { Username, Password, E-Mail, Birthday, Favorites }
+	 * @param id string
+	 * @returns The updated favourites array
+	 */
 	public addFavourite(user: any, id: any): Observable<any> {
 		const token = localStorage.getItem('token');
 
@@ -106,6 +149,12 @@ export class FetchApiDataService {
 			.pipe(map(this.extractResponseData), catchError(this.handleError));
 	}
 
+	/**
+	 * This function removes favourites from the user.
+	 * @param user { Username, Password, E-Mail, Birthday, Favorites }
+	 * @param id string
+	 * @returns The updated favourites array
+	 */
 	public removeFavourite(user: any, id: any): Observable<any> {
 		const token = localStorage.getItem('token');
 		return this.http

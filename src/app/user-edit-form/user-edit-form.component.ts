@@ -10,6 +10,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 	styleUrls: ['./user-edit-form.component.scss'],
 })
 export class UserEditFormComponent implements OnInit {
+
+	/**
+	 * Required fields for editing.
+	 */
 	@Input() user = { Username: '', Password: '', Email: '', Birthday: '' };
 
 	constructor(
@@ -21,6 +25,9 @@ export class UserEditFormComponent implements OnInit {
 
 	ngOnInit(): void {}
 
+	/**
+	 * This function updates the user.
+	 */
 	updateUser() {
 		const user = JSON.parse(localStorage.getItem('user'));
 		if (user) {
