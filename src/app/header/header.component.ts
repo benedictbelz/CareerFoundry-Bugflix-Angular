@@ -15,6 +15,9 @@ export class HeaderComponent implements OnInit {
 
 	ngOnInit(): void {}
 
+	/**
+	 * This function signs the user out and removes all data from local storage.
+	 */
 	signOut(): void {
 		localStorage.clear();
 		this.router.navigate(['welcome']);
