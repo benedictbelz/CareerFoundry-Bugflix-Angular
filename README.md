@@ -4,7 +4,7 @@ https://user-images.githubusercontent.com/43958228/136858583-74c59fde-dd0f-42b6-
 
 ## Description
 
-This project was generated with Angular CLI
+This project was generated with Angular CLI.
 
 ## Requirements
 
@@ -17,4 +17,4 @@ Using Angular, build the client-side for an movie application based on its exist
 
 ## Installation
 
-Download the folder, install the packages via `npm install`. Afterwards build the app via `ng build`and run it via `ng serve` where it will serve the file on port 4200.
+Download the folder, install the packages via `npm install`. Afterwards build the app via `ng build` and run it via `ng serve` where it will serve the file on port 4200.
